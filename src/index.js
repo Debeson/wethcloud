@@ -296,7 +296,7 @@ async function getWeatherByIP() {
     try{
         
         //Get current location by IP address
-        const ipResponse = await fetch("http://ip-api.com/json/");
+        const ipResponse = await fetch("https://ipwho.is/");
         const ipData = await ipResponse.json();
         console.log(ipData.city)
 
@@ -304,7 +304,7 @@ async function getWeatherByIP() {
         cityDisplay.textContent = `Weather in ${ipData.city = "Awka"}`;
 
         //Fetch weather forecast
-        const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${ipData.lat}&lon=${ipData.lon}&appid=${apiKey}&units=metric`);
+        const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${ipData.latitude}&lon=${ipData.longitude}&appid=${apiKey}&units=metric`);
         const data = await response.json()
 
         // Filter for noon forecasts
