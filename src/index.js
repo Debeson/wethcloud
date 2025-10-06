@@ -156,7 +156,7 @@ function getWeatherEmoji() {
     switch(true){
         // thunderstorm
         case (data.weather[0].id >= 200 && data.weather[0].id < 300):
-            weatherIconDisplay.src = "/src/assets/cloud-lightening.png";
+            weatherIconDisplay.src = "assets/cloud-lightening.png";
             weatherIconDisplay.classList.add("w-26")
             displayCityData.appendChild(weatherIconDisplay);
 
@@ -168,7 +168,7 @@ function getWeatherEmoji() {
 
         // drizzle    
         case (data.weather[0].id >= 300 && data.weather[0].id < 400):
-            weatherIconDisplay.src = "/src/assets/drizzle.png";
+            weatherIconDisplay.src = "assets/drizzle.png";
             weatherIconDisplay.classList.add("w-26")
             displayCityData.appendChild(weatherIconDisplay);
             weatherAdvice.textContent = "Light drizzle outside. best you take a small umbrella if you are heading out"
@@ -179,7 +179,7 @@ function getWeatherEmoji() {
 
         // rain
         case (data.weather[0].id >= 500 && data.weather[0].id < 600):
-            weatherIconDisplay.src = "/src/assets/cloud-rain.png";
+            weatherIconDisplay.src = "assets/cloud-rain.png";
             weatherIconDisplay.classList.add("w-26")
             displayCityData.appendChild(weatherIconDisplay);
             weatherAdvice.textContent = "Rainy weather ahead. Carry an umbrella if you are going out and watchout for slippery roads"
@@ -190,7 +190,7 @@ function getWeatherEmoji() {
 
         // snow
         case (data.weather[0].id >= 600 && data.weather[0].id < 700):
-            weatherIconDisplay.src = "/src/assets/snow.png";
+            weatherIconDisplay.src = "assets/snow.png";
             weatherIconDisplay.classList.add("w-26")
             displayCityData.appendChild(weatherIconDisplay);
             weatherAdvice.textContent = "Its a snowy day, dress warmly and be careful if you are travelling"
@@ -201,7 +201,7 @@ function getWeatherEmoji() {
 
         // fog mist dust tornado
         case (data.weather[0].id >= 700 && data.weather[0].id < 800):
-            weatherIconDisplay.src = "/src/assets/fog-mist.png";
+            weatherIconDisplay.src = "assets/fog-mist.png";
             weatherIconDisplay.classList.add("w-26")
             displayCityData.appendChild(weatherIconDisplay);
             weatherAdvice.textContent = "Visibility is low due to mist/fog. drive or walk carefully"
@@ -213,7 +213,7 @@ function getWeatherEmoji() {
         // clear cloud
         case (data.weather[0].id === 800):
             console.log("equal")
-            weatherIconDisplay.src = "/src/assets/clear-cloud.png";
+            weatherIconDisplay.src = "assets/clear-cloud.png";
             weatherIconDisplay.classList.add("w-26")
             displayCityData.appendChild(weatherIconDisplay);
             weatherAdvice.textContent = "It`s a bright and sunny day, perfect time to head outside and enjoy the fresh air dont forget your sun glasses😎"
@@ -224,7 +224,7 @@ function getWeatherEmoji() {
 
         // clouds
         case (data.weather[0].id >= 801 && data.weather[0].id < 810):
-            weatherIconDisplay.src = "/src/assets/cloud-and-sun.png";
+            weatherIconDisplay.src = "assets/cloud-and-sun.png";
             weatherIconDisplay.classList.add("w-26")
             displayCityData.appendChild(weatherIconDisplay);
             weatherAdvice.textContent = "The sky is cloudy today, it might feel cooler then usual, so a light jacket could be handy"
@@ -235,7 +235,7 @@ function getWeatherEmoji() {
 
         default:
             console.log("default")
-            weatherIconDisplay.src = "/src/assets/danger-default";
+            weatherIconDisplay.src = "assets/danger-default";
             weatherIconDisplay.classList.add("w-26")
             displayCityData.appendChild(weatherIconDisplay);
             weatherAdvice.textContent = "Probable a dangerous weather condition out there, be extra careful as you moe about your day"
@@ -386,7 +386,7 @@ toggleBtn.addEventListener("click", () => {
 function getCurrentYear() {
 
     const copyright = document.getElementById("copyright");
-    
+
     const date = new Date()
     const currentYear = date.getFullYear()
     console.log(currentYear)
