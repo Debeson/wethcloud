@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="./output.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/light/style.css" />
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/regular/style.css" />
+    <script src="https://cdn.jsdelivr.net"></script>
+    <title>Simple Weather App</title>
+</head>
+
+<body id="body" class="m-0 p-0  box-border font-Poppins ">
+
+
+    <!-- navigation -->
+    <nav class="fixed w-full top-0 left-0 z-50 py-4  lg:px-16 px-5 bg-[#121a2d] flex items-center justify-between ">
+        <img class="w-14 h-10 cursor-pointer" src="./assets/logo.png" alt="logo" />
+        <!-- darkmode and light mode -->
+        <button id="toggle-mode" class="h-[2rem] w-[2rem] bg-white  flex items-center justify-center rounded-full cursor-pointer">
+            <i id="toggle-icon" class="ph-light ph-toggle-left text-lg "></i>
+        </button>
+    </nav>
+
+    <!-- home page -->
+    <section id="home" class="flex relative h-screen w-full items-center justify-center">
+        <div class="w-full h-screen bg-[url('./assets/bg.jpeg')] bg-center  absolute blur-md "></div>
+        <div class="z-10 bg-[#0000004d] shadow-2xl p-4 rounded-xl  flex flex-col items-center justify-center gap-5  ">
+            <img class="shadow-lg  z-10 w-20 h-20 " src="./assets/logo.png" alt="">
+            <h1 class="text-white font-bold text-2xl">welcome to wethcloud</h1>
+            <p class="text-center text-white">Ready to schedule your day?<br> click to check the weather condition</p>
+            <button id="start-app" class="py-2 px-8 bg-[#121a2d] hover:bg-[#01145f] active:bg-[#121a2d] cursor-pointer  text-white rounded-lg hover:shadow-md  hover:shadow-[#0366b7] ">Get report</button>
+        </div>
+
+    </section>
+
+
+    <!-- hidden -->
+    <main id="main" class="  hidden   p-5 md:p-[4.1rem]  mt-[2.3rem] md:items-center md:justify-center md:gap-10  ">
+
+        <section
+            class="w-full relative md:shadow-md  md:shadow-gray-700 md:p-2 md:rounded-2xl  md:h-96 lg:w-[35%] flex flex-col md:items-center md:justify-center">
+
+            <!-- input group -->
+            <div id="input-group" class="relative w-full my-6 flex items-center justify-center gap-2 ">
+                <i class="ri-search-line absolute left-0 p-6  "></i>
+                <input id="search-input" type="text"
+                    class="py-2 px-12  w-3/3 border border-gray-900 outline-0 rounded-lg placeholder:text-[#244f72] focus:border-[#244f72] focus:shadow-md shadow-[#244f72] "
+                    placeholder="search city... " />
+                <button id="search-btn" id="search" class="p-2 w-1/3 bg-[#121a2d] hover:bg-[#01145f] active:bg-[#121a2d] cursor-pointer  text-white rounded-lg hover:shadow-md  hover:shadow-[#0366b7]">search</button>
+            </div>
+
+            <!-- city data  -->
+            <div id="city-data" class="w-full flex flex-col items-center justify-center">
+                <h1 class="text-2xl md:text-4xl font-semibold  "><i class="ph-bold ph-map-pin text-lg  "></i>City Name...
+                </h1>
+                <p class="text-sm lg:text-base font-mono  ">Weather description...</p>
+                <h2 class="my-4 text-3xl lg:text-6xl font-bold text-center ">Temperature (℃)</h2>
+                <img id="weather-icon" class="w-28 " id="weather-img" alt="" />
+            </div>
+
+            <!-- current date and time -->
+            <div class="w-full md:mb-4 flex items-center justify-around md:justify-center  ">
+                <div class="w-[50%]">
+                    <p id="current-date" class=" text-[0.60rem] font-medium "></p>
+                    <p id="current-time" class=" text-[0.60rem]  font-medium "></p>
+                </div>
+                
+                <!-- display message to users -->
+                <div class=" ">
+                    <!-- display error message to users -->
+                    <div class="">
+                        <p id="display-message" class="text-xs font-medium "></p>
+                    </div>
+
+                    <!-- display weather advise to the users -->
+                    <button id="get-heads-up" class="hidden p-2 text-sm  bg-[#121a2d] hover:bg-[#01145f] active:bg-[#121a2d] cursor-pointer  text-white rounded-lg hover:shadow-md  hover:shadow-[#0366b7] ">Get Weather Advice</button>
+                </div>
+                <div id="message-container"
+                    class="hidden flex-col items-center justify-center p-2 absolute top-0 bg-[#121a2d]/80 shadow-md shadow-gray-700  backdrop-blur-xs  rounded-lg transition-transform duration-700 ease-in-out  ">
+                    <p id="display-suggestion" class="text-sm font-medium text-white p-4 "></p>
+                    <button id="close" class="p-2 w-1/3 text-sm bg-[#121a2d] hover:bg-[#01145f] active:bg-[#121a2d] cursor-pointer  text-white rounded-lg hover:shadow-md  hover:shadow-[#0366b7]">close</button>
+                </div>
+            </div>
+        </section>
+
+
+
+        <section class="w-full md:w-[65%] md:h-96 ">
+            <h3 class="md:my-10   font-bold text-sm text-center  ">Other Weather Info... </h3>
+            <div class="grid grid-cols-3  gap-5 mb-4 ">
+
+                <!-- other weather data  -->
+                <div id="temperature" class="shadow-md shadow-gray-700 place-items-center rounded-2xl p-2 text-center">
+                    <!-- weather temperature  -->
+                </div>
+
+                <div id="humidity" class="shadow-md shadow-gray-700 place-items-center rounded-2xl p-2 text-center">
+                    <!-- humidity data   -->
+                </div>
+
+                <div id="windspeed" class="shadow-md shadow-gray-700 place-items-center rounded-2xl p-2 text-center">
+                    <!-- windspeed data  -->
+                </div>
+            </div>
+
+            <hr class="w-full text-blue-700 my-2 md:my-4 ">
+
+            <!-- weather forecast  -->
+            <h3 class="md:my-2   font-bold text-sm text-center " id="current-city"></h3>
+
+            <div id="forecastDiv" class="grid grid-cols-3 gap-5  ">
+                <!-- 3 days forecast data  -->
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer id="footer"
+        class=" lg:hidden w-full h-14 hidden md:flex md:flex-col md:items-center md:justify-center mt-6 bg-[#121a2d] ">
+        <p class="text-[0.7rem] text-white italic ">Made by <span class="text-[#244f72]">Debeson</span></p>
+        <p class="text-[0.6rem] text-white italic ">copyright @ 2025</p>
+    </footer>
+
+
+    <script src="./index.js"></script>
+</body>
+
+</html>
