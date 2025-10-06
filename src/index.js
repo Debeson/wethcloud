@@ -383,3 +383,15 @@ toggleBtn.addEventListener("click", () => {
   applyTheme(newTheme);
 });
 
+function getCurrentYear() {
+
+    const copyright = document.getElementById("copyright");
+    
+    const date = new Date()
+    const currentYear = date.getFullYear()
+    console.log(currentYear)
+
+    copyright.textContent = `copyright @${currentYear}`
+}
+
+getCurrentYear()
